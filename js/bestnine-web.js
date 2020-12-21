@@ -284,7 +284,7 @@ function getBestNine() {
             Raven.captureException(errorThrown);
             console.log(errorThrown);
             dismissAll();
-            showAlert("服务挂啦！出来挨打！");
+            showAlert("服务挂啦！截图 @摆柿阔落 出来挨打！--> " + errorThrown);
             return;
         },
         success: function (result) {
