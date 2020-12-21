@@ -201,7 +201,7 @@ function downloadImg() {
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        if (isAndroid) {
+        //if (isAndroid) {
             var node = document.getElementById("best-nine-canvas");
 
             domtoimage.toPng(node)
@@ -211,13 +211,13 @@ function downloadImg() {
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
             });
-        }
-        if (isIOS) {
-            html2canvas(document.querySelector("#best-nine-canvas"),{useCORS:true,logging:true}).then(canvas => {
-                let base64ImgSrc = canvas.toDataURL("image/png")
-                targetImg.src = base64ImgSrc;
-            });
-        }
+        //}
+        // if (isIOS) {
+        //     html2canvas(document.querySelector("#best-nine-canvas"),{useCORS:true,logging:true}).then(canvas => {
+        //         let base64ImgSrc = canvas.toDataURL("image/png")
+        //         targetImg.src = base64ImgSrc;
+        //     });
+        // }
         showImg();
     } else { // if PC
         var finalBadge = document.getElementById("best-nine-canvas");
