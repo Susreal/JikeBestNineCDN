@@ -276,7 +276,7 @@ function getBestNine() {
     }
 
     $.ajax({
-        url: "https://kuoluo.applinzi.com/jike/getBestNine/"+username.value,
+        url: "/jike/getBestNine/"+username.value,
         async: true,
         type: "GET",
         data: {},
