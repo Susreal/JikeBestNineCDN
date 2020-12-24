@@ -8,7 +8,9 @@ function getLastInputName() {
     if (lastInputName) $("#input-name").attr("value", lastInputName);
 }
 
-getLastInputName();
+window.onload = function () {
+    getLastInputName();
+}
 
 // 判断是否为移动端
 function isMobile() {
