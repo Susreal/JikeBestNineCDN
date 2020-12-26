@@ -17,15 +17,13 @@ window.onload = function () {
     getLastInputName();
     // 前两次启动会展示引导
     var showScrollGuide = localStorage.getItem("show-scroll-guide");
-    if (showScrollGuide && isMobile()) {
-        showScrollGuide = parseInt(showScrollGuide);
-        if (showScrollGuide < 2) {
-            window.scrollTo({
-                top: $("#main-page").offsetHeight - window.innerHeight,
-                behavior: "smooth"
-            });
-            localStorage.setItem("show-scroll-guide", showScrollGuide++);
-        }
+    showScrollGuide = isNaN(parseInt(showScrollGuide)) ? 0 : Math.max(0, parseInt(showScrollGuide));
+    if (showScrollGuide < 2) {
+        window.scrollTo({
+            top: $("#main-page").offsetHeight - window.innerHeight,
+            behavior: "smooth"
+        });
+        localStorage.setItem("show-scroll-guide", showScrollGuide++);
     }
 }
 
