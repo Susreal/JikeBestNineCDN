@@ -19,11 +19,13 @@ window.onload = function () {
     var showScrollGuide = localStorage.getItem("show-scroll-guide");
     showScrollGuide = isNaN(parseInt(showScrollGuide)) ? 0 : Math.max(0, parseInt(showScrollGuide));
     if (showScrollGuide < 2) {
-        window.scrollTo({
-            top: $("#main-page").height() - window.innerHeight,
-            behavior: "smooth"
-        });
-        localStorage.setItem("show-scroll-guide", showScrollGuide + 1);
+        setTimeout(function () {
+            window.scrollTo({
+                top: $("#main-page").height() - window.innerHeight,
+                behavior: "smooth"
+            });
+            localStorage.setItem("show-scroll-guide", showScrollGuide + 1);
+        }, 1000);
     }
 }
 
