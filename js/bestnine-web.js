@@ -2,6 +2,11 @@ var mTimer = null;
 var count = 1;
 var clipboardText = "总结一下2020吧！\n----------\n";
 
+// 判断是否为移动端
+function isMobile() {
+    return navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad|android)/) ? true : false;
+}
+
 // 获取缓存输入昵称
 function getLastInputName() {
     var lastInputName = localStorage.getItem("last-input-name");
@@ -10,14 +15,18 @@ function getLastInputName() {
 
 window.onload = function () {
     getLastInputName();
-}
-
-// 判断是否为移动端
-function isMobile() {
-    var u = navigator.userAgent;
-    // 和服务端index.wsgi保持一致：userAgent.find('iPhone')!=-1 or userAgent.find('Android')!=-1 or userAgent.find('iPad')!=-1:
-    var isMobile = u.indexOf('Android') > -1 || u.indexOf('iPhone') > -1 || u.indexOf('iPad') > -1;
-    return isMobile;
+    // 前两次启动会展示引导
+    var showScrollGuide = localStorage.getItem("show-scroll-guide");
+    if (showScrollGuide && isMobile()) {
+        showScrollGuide = parseInt(showScrollGuide);
+        if (showScrollGuide < 2) {
+            window.scrollTo({
+                top: $("#main-page").offsetHeight - window.innerHeight,
+                behavior: "smooth"
+            });
+            localStorage.setItem("show-scroll-guide", showScrollGuide++);
+        }
+    }
 }
 
 // 判断是否为隐藏(css)样式
