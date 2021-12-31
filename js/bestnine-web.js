@@ -1,6 +1,6 @@
 var mTimer = null;
 var count = 1;
-var clipboardText = "总结一下2020吧！\n----------\n";
+var clipboardText = "总结一下2021吧！\n----------\n";
 
 // 判断是否为移动端
 function isMobile() {
@@ -106,7 +106,7 @@ function showMsg() {
     var mask_msg_title = document.getElementById("mask_msg_title");
     var mask_msg_text = document.getElementById("mask_msg_text");
     mTimer = window.setInterval(function () {
-        mask_msg_title.innerText = "正在读取你的2020" + loadingMsg[parseInt(count / 1) % loadingMsg.length];
+        mask_msg_title.innerText = "正在读取你的2021" + loadingMsg[parseInt(count / 1) % loadingMsg.length];
         mask_msg_text.innerText = guoguoMsg[parseInt(count / 3) % guoguoMsg.length];
         count = count + 1;
     }, 1000);
@@ -180,7 +180,7 @@ function dismissGuide() {
 function dismissMsg() {
     var mask_msg_title = document.getElementById("mask_msg_title");
     var mask_msg_text = document.getElementById("mask_msg_text");
-    mask_msg_title.innerText = "正在读取你的2020.";
+    mask_msg_title.innerText = "正在读取你的2021.";
     mask_msg_text.innerText = "🐱 果果来陪陪你吧！";
 
     var mask_msg = document.getElementById("mask_msg");
@@ -311,7 +311,7 @@ function getBestNine() {
     showMask();
     showMsg();
 
-    clipboardText = "总结一下2020吧！\n----------\n";
+    clipboardText = "总结一下2021吧！\n----------\n";
 
     var username = document.getElementById("input-name");
     if (username.value == "") {
