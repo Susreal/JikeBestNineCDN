@@ -320,11 +320,30 @@ function getBestNine() {
         return;
     }
 
+    var screenName = username.value;
+    // 从URL中解析UUID
+    // https://m.okjike.com/users/7AB42093-406C-46EC-854E-75CEF51CC236?ref=PROFILE_CARD&utm_source=user_card
+    if (screenName.indexOf("http://m.okjike.com/users/") == 0 || screenName.indexOf("https://m.okjike.com/users/") == 0) {
+        try {
+            var uuidSplit = screenName.split('?')[0].split("/");
+            screenName = "UUID" + uuidSplit[uuidSplit.length - 1];
+        } catch (err) {
+            console.log(err);
+        }
+    } else if (screenName.indexOf("http://okjk.co/") == 0 || screenName.indexOf("https://okjk.co/") == 0) {
+        try {
+            var uuidSplit = screenName.split('?')[0].split("/");
+            screenName = "SURL" + uuidSplit[uuidSplit.length - 1];
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     // 缓存输入名称
-    localStorage.setItem("last-input-name", username.value);
+    localStorage.setItem("last-input-name", screenName);
 
     $.ajax({
-        url: "/jike/getBestNine/" + username.value,
+        url: "/jike/getBestNine/" + screenName,
         async: true,
         type: "GET",
         data: {},
